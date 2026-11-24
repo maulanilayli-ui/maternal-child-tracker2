@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bunda & Si Kecil - Maternal & Child Health Tracker</title>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#b5446e">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🤱 Bunda & Si Kecil</h1>
+      <p>Pemantau Kesehatan Ibu Hamil & Tumbuh Kembang Anak</p>
+    </header>
+
+    <!-- Navigasi Tab -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="bukaTab('ibu', this)">🤰 Kesehatan Ibu</button>
+      <button class="tab-btn" onclick="bukaTab('anak', this)">👶 Tumbuh Kembang Anak</button>
+    </div>
+
+    <!-- TAB 1: KESEHATAN IBU HAMIL -->
+    <section id="tab-ibu" class="tab-content active">
+      <div class="card">
+        <h2>📅 Usia Kehamilan & Perkiraan Lahir (HPL)</h2>
+        <label for="hpht">Hari Pertama Haid Terakhir (HPHT):</label>
+        <div class="input-row">
+          <input type="date" id="hpht">
+          <button onclick="hitungKehamilan()">Hitung</button>
+        </div>
+        <div id="hasil-kehamilan" class="info-box" style="display: none;"></div>
+      </div>
+
+      <div class="card">
+        <h2>💊 Pengingat Harian Ibu Hamil</h2>
+        <p class="sub-text">Centang rutinitas sehat hari ini:</p>
+        <div class="checklist">
+          <label><input type="checkbox" id="cek-ttd" onchange="simpanRutinitasIbu()"> Minum Tablet Tambah Darah (TTD)</label>
+          <label><input type="checkbox" id="cek-asam" onchange="simpanRutinitasIbu()"> Asupan Asam Folat & Protein</label>
+          <label><input type="checkbox" id="cek-air" onchange="simpanRutinitasIbu()"> Minum Air Putih Minimal 8 Gelas</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: TUMBUH KEMBANG & IMUNISASI ANAK -->
+    <section id="tab-anak" class="tab-content">
+      <div class="card">
+        <h2>📏 Catatan Berat & Tinggi Badan Anak</h2>
+        <div class="input-grid">
+          <input type="text" id="nama-anak" placeholder="Nama Anak">
+          <input type="number" id="usia-bulan" placeholder="Usia (bulan)">
+          <input type="number" step="0.1" id="bb-anak" placeholder="Berat Badan (kg)">
+          <input type="number" step="0.1" id="tb-anak" placeholder="Tinggi Badan (cm)">
+        </div>
+        <button onclick="simpanPertumbuhan()">Simpan Catatan Pertumbuhan</button>
+
+        <ul id="riwayat-anak" class="list-data"></ul>
+      </div>
+
+      <div class="card">
+        <h2>💉 Daftar Imunisasi Dasar Lengkap</h2>
+        <p class="sub-text">Centang imunisasi yang sudah diberikan:</p>
+        <div id="daftar-imunisasi" class="checklist"></div>
+      </div>
+    </section>
+
+    <footer>
+      <small>Catatan: Aplikasi ini bersifat pencatatan mandiri. Selalu ikuti buku KIA dan jadwal pemeriksaan dokter/bidan.</small>
+    </footer>
+  </div>
+
+  
+  <script src="script.js"></script>
+</body>
+</html>
